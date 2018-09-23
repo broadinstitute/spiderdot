@@ -49,7 +49,7 @@ class clusterConfig:
         cf = os.path.join(
             #there is a note from here(https://qiita.com/zabeth129/items/dea3f71efd90546a2605) that asks for "__file__" in the interactive shell
             os.path.dirname(os.path.realpath("__file__")),
-            "/Users/sbryant/bench/spiderdot/configs/isilon.cfg"
+            "<location of config file>"
             )
         if not config.read([cf]):
             print("No configuration files found!")
@@ -57,7 +57,7 @@ class clusterConfig:
         self.username = config.get(self.cluster, "username")
         self.password = config.get(self.cluster, "password")
         self.name = config.get(self.cluster, "hostname")
-        self.host = config.get(self.cluster, "host")#"https://iodine.broadinstitute.org:8080"#"self.name"
+        self.host = config.get(self.cluster, "host")
         self.port = config.get(self.cluster, "port")
         self.verify_ssl = False #False works here but not when read from the config file # config.set(self.cluster, "verify_ssl")
         self.auth_settings = self.auth_settings
@@ -77,7 +77,7 @@ def connect(cluster):
 
     cf = os.path.join(
         os.path.dirname(os.path.realpath("__file__")),
-        "/Users/sbryant/bench/spiderdot/configs/isilon.cfg"
+        "<location of config file>"
     )
     if not config.read([cf]):
         print("No configuration files found!")
@@ -111,10 +111,10 @@ def connect(cluster):
         
 
 
-iod = clusterConfig('iodine')
+cfg = clusterConfig('<configuration>')
 # create an instance of the API class
-api_instance = isi_sdk.NamespaceApi(isi_sdk.ApiClient(iod))
-directory_metadata_path = '/ifs/stanley/genetics/analysis' # str | Directory path relative to /.
+api_instance = isi_sdk.NamespaceApi(isi_sdk.ApiClient(cfg))
+directory_metadata_path = '<directory>' # str | Directory path relative to /.
 metadata = True # bool | Show directory metadata.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 try:
