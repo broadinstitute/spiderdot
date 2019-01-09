@@ -13,3 +13,5 @@ Made guesses (some were trial and error) at what the values were to be.  Some I 
 
 Currently getting a permission denied at the root level, which is a good sign.
 The code is connecting - my user account needs permissions to the parent directory for the cluster.
+
+20190109 making some minor changes to see how forking works
